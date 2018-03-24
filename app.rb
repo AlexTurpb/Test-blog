@@ -14,5 +14,6 @@ end
 post '/new' do
 	nickname = params[:nickname]
 	post = params[:post]
-	erb "test #{nickname} <br/> #{post}"
+	@info =  "test #{nickname} <br/> #{post}"
+	erb :new
 end
