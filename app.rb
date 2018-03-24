@@ -10,3 +10,9 @@ end
 get '/new' do
 	erb :new
 end
+
+post '/new' do
+	nickname = params[:nickname]
+	post = params[:post]
+	erb "test #{nickname} <br/> #{post}"
+end
