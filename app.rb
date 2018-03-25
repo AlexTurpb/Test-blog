@@ -43,7 +43,9 @@ post '/new' do
 		if
 			@error != ""
 			return erb :new
-		else		
+		else
+			
+			@db.execute 'insert into Posts (post, author, created_date) values (?, ?, datetime())', [post, nickname]		
 			@info =  "#{nickname} your post #{post} added to db"
 			return erb :new
 	end
