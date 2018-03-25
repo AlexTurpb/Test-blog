@@ -3,7 +3,7 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 
-get '/timeline' do
+get '/' do
 	erb :timeline
 end
 
