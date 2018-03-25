@@ -14,6 +14,16 @@ end
 post '/new' do
 	nickname = params[:nickname]
 	post = params[:post]
-	@info =  "test #{nickname} <br/> #{post}"
-	erb :new
+
+	hh = {:nickname => 'Enter name', :post => 'Enter post'}
+
+	@error = hh.select { |key,_| params[key] == ""}.values.join(", ")
+
+		if
+			@error != ""
+			return erb :new
+		else		
+			@info =  "#{nickname} your post #{post} added to db"
+			return erb :new
+	end
 end

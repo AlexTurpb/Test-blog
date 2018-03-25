@@ -60,10 +60,10 @@
 
     		<div>
 			      <%if @error && @error.length > 0 then %>
-			          <div class="alert alert-danger"><%=@error%></div>
+			          <div class="alert alert-danger" role="alert"><%=@error%></div>
 			      <% end %>
 			      <%if @info && @info.length > 0 then %>
-			          <div class="alert alert-info"><%=@info%></div>
+			          <div class="alert alert-info" role="info"><%=@info%></div>
 			      <% end %>
 			      <%= yield %>
 			</div>
