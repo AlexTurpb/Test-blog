@@ -22,11 +22,20 @@ configure do
 		"post" text,
 		"created_date" date
 	)'
+
+	@db.execute 'Create table if not exists "Comments"
+	(
+		"id" integer primary key autoincrement,
+		"post_id" integer not null,
+		"comment_author" text,
+		"comment" text,
+		"created_date" date
+	)'
 end
 
 
 get '/' do
-	@posts = @db.execute 'select * from Posts'
+	@posts = @db.execute 'select * from Posts order by id'
 	erb :timeline
 end
 
@@ -55,5 +64,27 @@ end
 
 get '/post-details/:post_id' do
 	post_id = params[:post_id]
+
+	post_det = @db.execute 'select * from Posts where id = ?', [post_id]
+	@single_post = post_det[0]
+
 	erb :post_details
+end
+
+post "/post-details/#{@single_post['id']}" do
+	post_id = params[:post_id]
+	comment_author = params[:comment_author]
+	comment = params[:comment]
+	
+	hh = {:comment_author => 'Enter name', :comment => 'Enter comment'}
+
+	@error = hh.select { |key,_| params[key] == ""}.values.join(", ")
+
+	if
+		@error != ""
+		return erb :post_details
+	else	
+		@db.execute 'insert into Comments (post_id, comment_author, comment, created_date) values (?, ?, ?, datetime())', [post_id, comment_author, comment]
+		erb :post_details
+	end
 end

@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Posts timeline</title>
+<title>Posts timeline</title>
 
-</head>
-<body>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">	
 	<h2 class="display-4">Posts timeline</h2>
 </div>
-		<% @posts.each do |post| %>
-			<div class="alert alert-dark" role="alert"> 
-				<%= post['post'] %> <hr/>
-				By: <strong><i><%= post['author'] %></i></strong> on: <%= post['created_date'] %> <br/>
-				<a href="/post-details/<%= post['id'] %>">#<%= post['id'] %> comments</a>
-			</div> 
-		<% end %>
+<div class="container">
+	<% @posts.each do |post| %>
+		<div class="alert alert-dark" role="alert"> 
+			<%= post['post'] %> <hr/>
+			By: <strong><i><%= post['author'] %></i></strong> on: <%= post['created_date'] %> <br/>
+			<a href="/post-details/<%= post['id'] %>">#<%= post['id'] %> comments</a>
+		</div> 
+	<% end %>
+</div>		
 
 
 
@@ -27,6 +24,3 @@
 
 
 
-
-</body>
-</html>
