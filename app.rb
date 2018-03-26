@@ -24,9 +24,12 @@ configure do
 	)'
 end
 
+
 get '/' do
+	@posts = @db.execute 'select * from Posts'
 	erb :timeline
 end
+
 
 get '/new' do
 	erb :new
