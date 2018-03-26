@@ -64,6 +64,7 @@ end
 
 get '/post-details/:post_id' do
 	post_id = params[:post_id]
+	@comments = @db.execute 'select * from Comments where post_id =?', [post_id]
 
 	post_det = @db.execute 'select * from Posts where id = ?', [post_id]
 	@single_post = post_det[0]

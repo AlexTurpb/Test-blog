@@ -4,7 +4,7 @@
 	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">	
 		<h2 class="display-4"><strong>Post #<%= params[:post_id] %></strong></h2>
 	</div>
-	<div class="alert alert-dark" role="alert">
+	<div class="alert alert-dark">
 		<%= @single_post['post'] %> <hr/>
 		By: <strong><i><%= @single_post['author'] %></i></strong> on: <%= @single_post['created_date'] %> <br/>
 	</div>
@@ -12,6 +12,14 @@
 
 <div class="container">
 	<h4>Comments:</h4>
+<div class="container">
+	<% @comments.each do |comment| %>
+		<div class="alert alert-info"> 
+			<%= comment['comment'] %> <hr/>
+			By: <strong><i><%= comment['comment_author'] %></i></strong> on: <%= comment['created_date'] %> <br/>
+		</div> 
+	<% end %>
+	</div>
 </div>	
 
 <div class="container">
