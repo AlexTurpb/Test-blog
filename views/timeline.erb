@@ -4,13 +4,15 @@
 	<title>Posts timeline</title>
 </head>
 <body>
-<h2>Posts timeline</h2>
-	<p>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">	
+	<h2 class="display-4">Posts timeline</h2>
+</div>
 		<% @posts.each do |post| %>
-
-		Here will be posts list
+			<div class="alert alert-dark" role="alert"> 
+				<%= post['post'] %> <hr/>
+				By: <strong><%= post['author'] %></strong> on: <%= post['created_date'] %> 
+			</div> 
 		<% end %>
-	</p>
 
 
 
