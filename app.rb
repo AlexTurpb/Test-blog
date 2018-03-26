@@ -71,20 +71,11 @@ get '/post-details/:post_id' do
 	erb :post_details
 end
 
-post "/post-details/#{@single_post['id']}" do
+post '/post-details/:post_id' do
 	post_id = params[:post_id]
 	comment_author = params[:comment_author]
 	comment = params[:comment]
 	
-	hh = {:comment_author => 'Enter name', :comment => 'Enter comment'}
-
-	@error = hh.select { |key,_| params[key] == ""}.values.join(", ")
-
-	if
-		@error != ""
-		return erb :post_details
-	else	
-		@db.execute 'insert into Comments (post_id, comment_author, comment, created_date) values (?, ?, ?, datetime())', [post_id, comment_author, comment]
-		erb :post_details
-	end
+	@db.execute 'insert into Comments (post_id, comment_author, comment, created_date) values (?, ?, ?, datetime())', [post_id, comment_author, comment]
+	redirect to('/post-details/' + post_id)
 end
