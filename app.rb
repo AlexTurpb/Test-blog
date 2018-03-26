@@ -57,7 +57,6 @@ post '/new' do
 		return erb :new
 	else 
 		@db.execute 'insert into Posts (post, author, created_date) values (?, ?, datetime())', [post, nickname]		
-		@info =  "#{nickname} your post added to Timeline. You will be automaticaliy redirected in 2 sec."
 		redirect to '/'
 	end
 end
