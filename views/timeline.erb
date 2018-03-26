@@ -12,7 +12,7 @@
 			<div class="alert alert-dark" role="alert"> 
 				<%= post['post'] %> <hr/>
 				By: <strong><i><%= post['author'] %></i></strong> on: <%= post['created_date'] %> <br/>
-				<a href="/details/<%= post['id'] %>">Comments</a>
+				<a href="/post-details/<%= post['id'] %>">#<%= post['id'] %> comments</a>
 			</div> 
 		<% end %>
 

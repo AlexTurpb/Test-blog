@@ -52,3 +52,8 @@ post '/new' do
 		redirect to '/'
 	end
 end
+
+get '/post-details/:post_id' do
+	post_id = params[:post_id]
+	erb :post_details
+end
